@@ -1,0 +1,118 @@
+\documentclass[oneside,a4paper,12pt]{article} % Gibt das Seitenformat und die Schriftgröße an.
+
+% -------------------------------------- Integration von Packages -------------------------------------- 
+% Literatur und Sprache
+	\usepackage[ngerman]{babel}
+	\usepackage[style=bwl-FU,backend=bibtex,natbib=true,maxcitenames=2]{biblatex}
+	\addbibresource{Content/Literaturverzeichnis.bib}
+	
+% Format und Seitenlayout
+	\usepackage[left=3cm,right=3cm,bottom=3cm]{geometry} % Legt die linken und rechten Seitenränder fest.
+	\usepackage{setspace} % Paket, das die Änderung des Zeilenabstands ermöglicht.
+	\setstretch{1.3} % Legt einen Zeilenabstand von 1,3 fest.
+	\parindent0pt % Definition des Einrückens bei neuem Abschnitt.
+    \parskip10pt % Definition des Abstands zweier Absätze.
+	\usepackage{footmisc} % Implementiert eine Reihe von Fußnotenoptionen.
+	\renewcommand{\footnotelayout}{\setstretch{1}} % Legt einen Zeilenabstand von 1 für die Fußnoten fest.
+	\pagestyle{headings} % Erzeugt eine Überschrift mit der Seitenzahl und der Überschrift des aktuellen Abschnitts.
+	\usepackage[utf8]{inputenc} % Ermöglicht die Verwendung von Sonderzeichen.
+	\usepackage[T1]{fontenc} % Ermöglicht die Verwendung von Sonderzeichen.
+	\usepackage{eurosym} % Einbindung von €
+	\usepackage{acronym} % Ermöglicht die Einbindung eines Abkürzungsverzeichnisses.
+	\usepackage{nomencl} % Nützlich, um eine Liste von Symbolen zu erstellen.
+	\usepackage{enumerate} % Nützlich für Auflistungen.
+	\usepackage{color} % Ermöglicht die Definition von Farben.
+	
+% Tabellen und Graphiken
+	\usepackage{booktabs} % Verbessert das Design der Tabellen
+	\usepackage{longtable} % Erlaubt Tabellen, die länger als eine Seite sind.
+	\usepackage{multirow,multicol} % Mit diesen Paket ist es nun möglich, Spalten und Zeilen innerhalb von Tabellen zu kombinieren.
+	\usepackage{graphicx} % Ermöglicht die Implementierung von Grafiken.
+	\usepackage{subfig} % Ermöglicht eine Abbildung aus mehreren Unterabbildung.
+	\graphicspath{{./Graphs/}} % Sagt LATEX, dass die Bilder in einem Ordner namens 'Graphs' unter dem Verzeichnis des Hauptdokuments gespeichert werden.
+	\usepackage[hypcap=false]{caption} % Bietet viele Möglichkeiten zur Anpassung der Beschriftungen.	
+
+% Mathematik
+	\usepackage{amscd,amsfonts,amsmath,amssymb,amsthm,amscd,bbm} % Erweitert das Mathematikset.
+
+
+% -------------------------------- Informationen der Arbeit -------------------------------- 
+% Bitte geben Sie diese Informationen zu Beginn einmal an. Auf diese Weise werden die Lücken im Folgenden automatisch ausgefüllt.
+	\newcommand{\name}{Finn Vincent Drexhage} % Geben Sie Ihren Namen an.
+	\newcommand{\dateofthesis}{16. Juni 2025} % Geben Sie das Datum der Einreichung Ihrer Arbeit an.
+	\newcommand{\titleofthesis}{Hedging Renenwables with Location Spreads} % Geben Sie den Titel Ihrer Arbeit an.
+	\newcommand{\streetadress}{Ruhesteinstraße 5} % Geben Sie Ihre Adresse an.
+	\newcommand{\postalcode}{71083} % Geben Sie Ihre Postleitzahl an.
+	\newcommand{\city}{Herrenberg} % Geben Sie Ihre Stadt an.
+	\newcommand{\email}{uvyta@student.kit.edu} % Geben Sie Ihre E-Mail Adresse an.
+	\newcommand{\typeofthesis}{Bachelorarbeit} % Geben Sie die Art der Arbeit an: Seminararbeit, Bachelorarbeit, Masterarbeit.
+
+% --------------------------------- Definition of hyperlinks --------------------------------- 
+% Hyperreferenzen
+	\usepackage{hyperref}
+	\definecolor{darkblue}{rgb}{0,0,.5}
+	\hypersetup{
+	    pdfstartview={FitH}, 
+        colorlinks=true,
+        linkcolor=black,
+        citecolor=darkblue,
+        urlcolor=black,
+        pdftitle=\titleofthesis,
+        pdfsubject=\typeofthesis,
+        pdfauthor=\name,
+        bookmarksopen
+        }
+        
+
+
+
+
+
+
+
+% ----------------------------------- Start des Dokuments ----------------------------------- 	
+\begin{document}
+	\setcounter{page}{2} % Umschlagseiten und Titelseite sind nicht nummeriert. Die Nummerierung beginnt auf Seite 2.
+	
+% Titelseite 
+	\input{Content/Titelseite_Abschlussarbeit} 
+
+% Inhaltsverzeichnis
+	\setcounter{page}{1}\renewcommand{\thepage}{\roman{page}} % Setzt die Nummerierung auf römisch klein.
+	\newpage 
+	\tableofcontents % Erzeugt Inhaltsverzeichnis.
+
+% Abbildungsverzeichnis 
+	\newpage
+	\listoffigures % Fügt das Abbildungsverzeichnis ein.
+	\addcontentsline{toc}{section}{Abbildungsverzeichnis} % Fügt das Abbildungsverzeichnis dem Inhaltsverzeichnis hinzu.
+		
+% Tabellenverzeichnis (auskommentieren, wenn keine Tabellen in der Arbeit vorhanden sind).
+	\newpage
+	\listoftables % Fügt das Tabellenverzeichnis ein.
+	\addcontentsline{toc}{section}{Tabellenverzeichnis} % Fügt das Tabellenverzeichnis dem Inhaltsverzeichnis hinzu.
+	
+% Hauptteil der Arbeit 
+    \newpage
+	\setcounter{page}{1}\renewcommand{\thepage}{\arabic{page}} % Setzt die Nummerierung auf arabisch.
+	\include{Content/Motivation}
+	\include{Content/Grundlagen zu Location Spreads}
+	\include{Content/Empirische Analyse}
+        \include{Content/Diskussion der Ergebnisse}
+        \include{Content/Fazit und Ausblick}
+	
+% Literaturverzeichnis
+	\newpage
+	%\bibliographystyle{chicago} % Legt den Zitierstil fest.
+	%\bibliography{Content/Literaturverzeichnis}
+	\printbibliography
+% Anhang 
+	\newpage
+	\appendix % Nummeriert den Anhang mit Buchstaben.
+	\include{Content/Appendix}
+	
+% Erklärung 
+	\newpage\thispagestyle{empty}
+	\include{Content/Erklärung_Abschlussarbeit} 
+    
+\end{document}
